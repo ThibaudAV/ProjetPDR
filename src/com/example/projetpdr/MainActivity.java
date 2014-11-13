@@ -5,14 +5,10 @@ package com.example.projetpdr;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-<<<<<<< HEAD
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
-=======
-
->>>>>>> ee264d0d3cc014bd9f8853971768e20df3f537f1
 
 public class MainActivity extends Activity  implements OnClickListener{
 
