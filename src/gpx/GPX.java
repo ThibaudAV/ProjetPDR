@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Mathilde
+ * @author Mathilde et Thibaud
  *
  */
 public class GPX {
@@ -30,8 +30,10 @@ public class GPX {
 		tracks.remove(track);
 	}
 	
-	
-	public
+	public List<Track> getTracks() 
+	{
+				return tracks;
+	}
 	
 	
 }
