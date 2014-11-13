@@ -20,9 +20,19 @@ public class TrackSeg {
 		trackPoints = new ArrayList<TrackPoint>();
 	}
 	
-	public void addTrackPoint()
+	public void addTrackPoint(TrackPoint trackPoint)
 	{
-		
+		trackPoints.add(trackPoint);
+	}
+	
+	public void removeTrackPoint(TrackPoint trackPoint)
+	{
+		trackPoints.remove(trackPoint);
+	}
+	
+	public List<TrackPoint> getTrackPoints()
+	{
+		return trackPoints;
 	}
 
 }

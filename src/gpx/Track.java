@@ -29,7 +29,7 @@ public class Track {
 		trackSegs.remove(trackSeg);
 	}
 	
-	public List<TrackSeg> getTrackSeg()
+	public List<TrackSeg> getTrackSegs()
 	{
 		return trackSegs;
 	}
