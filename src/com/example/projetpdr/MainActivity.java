@@ -29,21 +29,20 @@ public class MainActivity extends Activity  implements OnClickListener{
 
 	@Override
 	public void onClick(View view) {
-
-		switch (view.getId()) {
-		case R.id.button_gpx_view:
-
+		Intent intent;
+		
+		int id = view.getId();
+		if (id == R.id.button_gpx_view) {
 			Toast.makeText(MainActivity.this, "Button GPX Viewer", Toast.LENGTH_SHORT).show();
-			
-			Intent intent = new Intent(MainActivity.this, GpxViewer.class);
+			intent = new Intent(MainActivity.this, GpxViewer.class);
+			startActivity(intent);
+		} else if (id == R.id.button_PDR) {
+			Toast.makeText(MainActivity.this, "Button PDR Viewer", Toast.LENGTH_SHORT).show();
+			intent = new Intent(MainActivity.this, PDRActivity.class);
 			startActivity(intent);
 			
-			break;
-		case R.id.button_PDR:
 			
-			break;
-		default:
-			break;
+		} else {
 		}
 
 	}
