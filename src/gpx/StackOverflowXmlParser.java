@@ -76,7 +76,7 @@ public class StackOverflowXmlParser {
               
          parser.require(XmlPullParser.START_TAG, ns, "trkseg");
          while (parser.next() != XmlPullParser.END_TAG) {
-             if (parser.getEventType() != XmlPullParser.START_TAG) {  
+             if (parser.getEventType() != XmlPullParser.START_TAG) { 
                  continue;
              }
              String name = parser.getName();
