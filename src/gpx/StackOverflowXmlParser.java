@@ -29,7 +29,6 @@ public class StackOverflowXmlParser {
  // Processes GPX tags.
     private static GPX readGPX(XmlPullParser parser) throws XmlPullParserException, IOException {
        GPX entries = new GPX();
-       System.out.println("Coucou.");
 
         parser.require(XmlPullParser.START_TAG, ns, "gpx");
         while (parser.next() != XmlPullParser.END_TAG) {
@@ -37,12 +36,10 @@ public class StackOverflowXmlParser {
                 continue;
             }
             String name = parser.getName();
-            // Starts by looking for the gpx tag
+            // Starts by looking for the trk tag
             if (name.equals("trk")) {
   	               entries.addTrack(readTrack(parser));
-  	             System.out.println("Coucou..");
             } else {
-            	 System.out.println("Coucou...");
                 skip(parser);
             }
         }  
@@ -55,8 +52,6 @@ public class StackOverflowXmlParser {
     private static Track readTrack(XmlPullParser parser) throws XmlPullParserException, IOException {
         Track entries = new Track();
         
-        System.out.println("Coucou+");
-
          parser.require(XmlPullParser.START_TAG, ns, "trk");
          while (parser.next() != XmlPullParser.END_TAG) {
              if (parser.getEventType() != XmlPullParser.START_TAG) {
@@ -66,9 +61,8 @@ public class StackOverflowXmlParser {
              // Starts by looking for the trk tag
              if (name.equals("trkseg")) {
                 entries.addTrackSeg(readTrackSeg(parser));
-                System.out.println("Coucou++");
+
              } else {
-            	 System.out.println("Coucou+++");
                  skip(parser);
              }
          }  
@@ -79,19 +73,18 @@ public class StackOverflowXmlParser {
  // Processes TrackSeg tags.
     private static TrackSeg readTrackSeg(XmlPullParser parser) throws XmlPullParserException, IOException {
         TrackSeg entries = new TrackSeg();
-        System.out.println("Coucou-");
+              
          parser.require(XmlPullParser.START_TAG, ns, "trkseg");
          while (parser.next() != XmlPullParser.END_TAG) {
-             if (parser.getEventType() != XmlPullParser.START_TAG) {
+             if (parser.getEventType() != XmlPullParser.START_TAG) {  
                  continue;
              }
              String name = parser.getName();
-             // Starts by looking for the trkseg tag
+             // Starts by looking for the trkpt tag
              if (name.equals("trkpt")) {
-            	 System.out.println("Coucou--");
                  entries.addTrackPoint(readTrackPoint(parser));
+                 skip(parser);
              } else {
-            	 System.out.println("Coucou---");
                  skip(parser);
              }
          }  

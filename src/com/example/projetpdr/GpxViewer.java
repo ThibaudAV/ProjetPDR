@@ -24,7 +24,11 @@ public class GpxViewer extends Activity {
 
 	    Intent intent = getIntent();
 	    
-	    System.out.println("=============== DEBUT ===============");
+		setContentView(R.layout.activity_gpx_viewer);
+		
+		
+		
+		System.out.println("=============== DEBUT ===============");
 		try {
 			InputStream is = new FileInputStream("/mnt/sdcard/bikeandrun.gpx");
 			GPX gpx = StackOverflowXmlParser.parse(is);
@@ -36,9 +40,12 @@ public class GpxViewer extends Activity {
 			System.out.println("Erreur : " + e.getMessage());
 		}
 		System.out.println("=============== FIN ===============");	
-	    
-	    
-		setContentView(R.layout.activity_gpx_viewer);
+		
+		
+		
+		
+		
+		
 	}
 	
 }
