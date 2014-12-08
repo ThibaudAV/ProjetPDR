@@ -1,7 +1,9 @@
-package com.example.projetpdr;
+package com.example.projetpdr;	
 
 import gpx.GPX;
 import gpx.StackOverflowXmlParser;
+import android.app.Activity;
+import android.os.Bundle;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,14 +15,12 @@ import org.xmlpull.v1.XmlPullParserException;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
 
 public class GpxViewer extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
 
 	    Intent intent = getIntent();
 	    
