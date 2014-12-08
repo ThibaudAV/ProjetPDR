@@ -86,9 +86,9 @@ public class PDRActivity extends Activity implements StepDetectionListener, OnCl
 		
 	}
 	@Override
-	public void onDeviceAttitudeChanged(String string) {
+	public void onDeviceAttitudeChanged(float yaw) {
 		TextView TV_attHandle = (TextView) findViewById(R.id.attitudeHandle);
-		TV_attHandle.setText(string);
+		TV_attHandle.setText(yaw+"");
 	}
 	
 }
