@@ -45,11 +45,12 @@ public class DeviceAttitudeHandler implements SensorEventListener {
 	        orientationVals[1] = (float) Math.toDegrees(orientationVals[1]);
 	        orientationVals[2] = (float) Math.toDegrees(orientationVals[2]);
 
-	        mDeviceAttitudeListener.onDeviceAttitudeChanged(" Yaw: " + orientationVals[0] + "\n Pitch: "
-	                + orientationVals[1] + "\n Roll (not used): "
-	                + orientationVals[2]);
+//	        mDeviceAttitudeListener.onDeviceAttitudeChanged(" Yaw: " + orientationVals[0] + "\n Pitch: "
+//	                + orientationVals[1] + "\n Roll (not used): "
+//	                + orientationVals[2]);
+	        mDeviceAttitudeListener.onDeviceAttitudeChanged(orientationVals[0]);
+	        
 		}
-		
 	}
 
 	private DeviceAttitudeListener mDeviceAttitudeListener;
@@ -63,7 +64,7 @@ public class DeviceAttitudeHandler implements SensorEventListener {
 	}
 	
 	public interface DeviceAttitudeListener {
-		public void onDeviceAttitudeChanged(String string);
+		public void onDeviceAttitudeChanged(float yaw);
 	}
 
 }

@@ -47,6 +47,7 @@
         </activity>
         <activity
             android:name=".PDRActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_pdr" >
         </activity>
     </application>
