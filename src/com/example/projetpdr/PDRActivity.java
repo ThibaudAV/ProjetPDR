@@ -91,4 +91,5 @@ public class PDRActivity extends Activity implements StepDetectionListener, OnCl
 		TV_attHandle.setText(yaw+"");
 	}
 	
+	
 }

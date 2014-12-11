@@ -50,6 +50,11 @@
             android:screenOrientation="portrait"
             android:label="@string/title_activity_pdr" >
         </activity>
+        <activity
+            android:name=".PDR_GMap_Activity"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_pdr_gmap" >
+        </activity>
     </application>
 
 </manifest>
