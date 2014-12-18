@@ -107,7 +107,7 @@ public class StackOverflowXmlParser {
              if (name.equals("trkpt")) {                   	 
             	  lat =  Double.parseDouble(parser.getAttributeValue(null, "lat"));
             	  lon =  Double.parseDouble(parser.getAttributeValue(null, "lon"));
-            	  System.out.println("Lat : " + lat +  " Lon : " + lon );
+            	  //System.out.println("Lat : " + lat +  " Lon : " + lon );
              } 
          else {
                  skip(parser);

@@ -2,6 +2,9 @@ package com.example.projetpdr;
 
 import gpx.GPX;
 import gpx.StackOverflowXmlParser;
+import gpx.Track;
+import gpx.TrackPoint;
+import gpx.TrackSeg;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -56,30 +59,78 @@ public class GpxViewer extends Activity {
 	                .snippet("The most populous city in France.")
 	                .position(grenoble)); */
 	        
+	        
 	        // Other supported types include: MAP_TYPE_NORMAL,
 	        // MAP_TYPE_TERRAIN, MAP_TYPE_HYBRID and MAP_TYPE_NONE
 	        myMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
 		 
 	     
+	       
 	        
-	        myMap.addMarker(new MarkerOptions()
-            .icon(BitmapDescriptorFactory.fromResource(R.drawable.common_signin_btn_icon_disabled_focus_light))
-            .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
-            .position(new LatLng(45.189, 5.704)));
-	        
-	        Polyline chemin1 = myMap.addPolyline(new PolylineOptions()
+	        /* Test d'affichage des Polylines
+	         * 
+	         * Polyline chemin1 = myMap.addPolyline(new PolylineOptions()
 	        .add(new LatLng(45.189, 5.704), new LatLng(45.188, 5.725), new LatLng(45.191, 5.733))
 	        .width(5)
 	        .color(Color.RED));
 	        
 	        
 	        Polyline chemin2 = myMap.addPolyline(new PolylineOptions()
-	        .add(new LatLng(45.193, 5.740), new LatLng(45.196, 5.748))
+	        .add(new LatLng(45.191, 5.733), new LatLng(45.196, 5.748))
 	        .width(5)
-	        .color(Color.GREEN));
+	        .color(Color.GREEN));*/
+	        
+	        
+	        
+	        try {
+				//InputStream is = new FileInputStream("/mnt/sdcard/bikeandrun.gpx");
+	        	
+	        	//Fichier gpx à afficher sur la carte
+	        	InputStream is = getAssets().open("bikeandrun.gpx");
+
+	        	//Fichier gpx parsé
+				GPX gpx = StackOverflowXmlParser.parse(is);
+				
+				// Pour chaque Track
+				 for (Track t : gpx.getTracks())
+				 {
+					 
+					 //Pour chaque TrackSeg
+					for (TrackSeg ts : t.getTrackSegs())
+					{
+						//Création d'options de Polyline (couleur et épaisseur)
+						PolylineOptions chemin = new PolylineOptions();
+						chemin.color(Color.GREEN);
+						chemin.width(5);
+						
+						//Pour chaque point
+						for (TrackPoint tp : ts.getTrackPoints())
+						{
+							//Ajout du point dans les options
+					        chemin.add(new LatLng(tp.getLatitude(), tp.getLongitude())); 
+						}
+						
+						// Ajout d'une polyline à la carte avec les options de la variable chemin
+						myMap.addPolyline(chemin);
+					}
+				 }
+
+				
+				
+			} catch (FileNotFoundException e) {
+				System.out.println("Erreur : " + e.getMessage());
+			} catch (XmlPullParserException e) {
+				System.out.println("Erreur : " + e.getMessage());
+			} catch (IOException e) {
+				System.out.println("Erreur : " + e.getMessage());
+			}
+	        
 		
 		
-		System.out.println("=============== DEBUT ===============");
+	/*	Utiliser pour réaliser des tests lors du développement du Parseur
+	 * 
+	 * 
+	 * System.out.println("=============== DEBUT ===============");
 		try {
 			InputStream is = new FileInputStream("/mnt/sdcard/bikeandrun.gpx");
 			GPX gpx = StackOverflowXmlParser.parse(is);
@@ -90,7 +141,7 @@ public class GpxViewer extends Activity {
 		} catch (IOException e) {
 			System.out.println("Erreur : " + e.getMessage());
 		}
-		System.out.println("=============== FIN ===============");	
+		System.out.println("=============== FIN ===============");	*/
 		
 		
 		
