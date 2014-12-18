@@ -30,8 +30,7 @@ public class DeviceAttitudeHandler implements SensorEventListener {
 	public void onSensorChanged(SensorEvent event) {
 		
 //		System.arraycopy(event.values, 0, rotationVector, 0, event.values.length);
-		if( mDeviceAttitudeListener != null)
-		{
+		
 			// Convert the rotation-vector to a 4x4 matrix.
 	        SensorManager.getRotationMatrixFromVector(mRotationMatrixFromVector, event.values);
 	        
@@ -48,8 +47,11 @@ public class DeviceAttitudeHandler implements SensorEventListener {
 //	        mDeviceAttitudeListener.onDeviceAttitudeChanged(" Yaw: " + orientationVals[0] + "\n Pitch: "
 //	                + orientationVals[1] + "\n Roll (not used): "
 //	                + orientationVals[2]);
-	        mDeviceAttitudeListener.onDeviceAttitudeChanged(orientationVals[0]);
 	        
+	    if( mDeviceAttitudeListener != null)
+		{
+	        mDeviceAttitudeListener.onDeviceAttitudeChanged(orientationVals[0]);
+
 		}
 	}
 
@@ -65,6 +67,12 @@ public class DeviceAttitudeHandler implements SensorEventListener {
 	
 	public interface DeviceAttitudeListener {
 		public void onDeviceAttitudeChanged(float yaw);
+	}
+	
+	// retourne l'orientation Yaw
+	public float getYaw() {
+		System.out.println(orientationVals[0]);
+		return orientationVals[0];
 	}
 
 }

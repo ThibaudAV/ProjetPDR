@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-public class PDRActivity extends Activity implements StepDetectionListener, OnClickListener,DeviceAttitudeListener{
+public class PDR_Activity extends Activity implements StepDetectionListener, OnClickListener,DeviceAttitudeListener{
 	
 	StepDetectionHandler stepDetectionHandler;
 	DeviceAttitudeHandler deviceAttitudeHandler;
@@ -49,24 +49,6 @@ public class PDRActivity extends Activity implements StepDetectionListener, OnCl
 	}
 	
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.pdr, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
 	
 
 	@Override
@@ -90,5 +72,6 @@ public class PDRActivity extends Activity implements StepDetectionListener, OnCl
 		TextView TV_attHandle = (TextView) findViewById(R.id.attitudeHandle);
 		TV_attHandle.setText(yaw+"");
 	}
+	
 	
 }

@@ -23,7 +23,9 @@ public class MainActivity extends Activity  implements OnClickListener{
 		
 		Button button_PDR = (Button) findViewById(R.id.button_PDR);
 		button_PDR.setOnClickListener(this);
-		
+
+		Button button_PDR_gMap = (Button) findViewById(R.id.button_pdr_gmap);
+		button_PDR_gMap.setOnClickListener(this);
 		
 	}
 
@@ -33,16 +35,19 @@ public class MainActivity extends Activity  implements OnClickListener{
 		
 		int id = view.getId();
 		if (id == R.id.button_gpx_view) {
-			Toast.makeText(MainActivity.this, "Button GPX Viewer", Toast.LENGTH_SHORT).show();
-			intent = new Intent(MainActivity.this, GpxViewer.class);
+//			Toast.makeText(MainActivity.this, "Button GPX Viewer", Toast.LENGTH_SHORT).show();
+			intent = new Intent(MainActivity.this, Gpx_Activity.class);
 			startActivity(intent);
 		} else if (id == R.id.button_PDR) {
-			Toast.makeText(MainActivity.this, "Button PDR Viewer", Toast.LENGTH_SHORT).show();
-			intent = new Intent(MainActivity.this, PDRActivity.class);
+//			Toast.makeText(MainActivity.this, "Button PDR Viewer", Toast.LENGTH_SHORT).show();
+			intent = new Intent(MainActivity.this, PDR_Activity.class);
 			startActivity(intent);
 			
 			
-		} else {
+		} else if (id == R.id.button_pdr_gmap) {
+//			Toast.makeText(MainActivity.this, "Button PDR Viewer", Toast.LENGTH_SHORT).show();
+			intent = new Intent(MainActivity.this, PDR_Activity_GMap.class);
+			startActivity(intent);
 		}
 
 	}

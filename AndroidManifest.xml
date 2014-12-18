@@ -20,6 +20,7 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="21" />
+    <uses-permission android:name="GPS_PROVIDER"/>
 
     <application
         android:allowBackup="true"
@@ -43,12 +44,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GpxViewer" >
+        <activity android:name=".Gpx_Activity" >
         </activity>
         <activity
-            android:name=".PDRActivity"
+            android:name=".PDR_Activity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_pdr" >
+        </activity>
+        <activity
+            android:name=".PDR_Activity_GMap"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_pdr_gmap" >
         </activity>
     </application>
 
