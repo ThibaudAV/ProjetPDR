@@ -44,7 +44,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GpxActivity" >
+        <activity android:name=".Gpx_Activity" >
         </activity>
         <activity
             android:name=".PDR_Activity"

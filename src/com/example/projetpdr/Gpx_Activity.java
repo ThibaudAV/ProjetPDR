@@ -25,7 +25,7 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 
-public class GpxActivity extends Activity {
+public class Gpx_Activity extends Activity {
 
 	private GoogleMap myMap;
 	

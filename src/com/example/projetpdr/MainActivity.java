@@ -36,7 +36,7 @@ public class MainActivity extends Activity  implements OnClickListener{
 		int id = view.getId();
 		if (id == R.id.button_gpx_view) {
 //			Toast.makeText(MainActivity.this, "Button GPX Viewer", Toast.LENGTH_SHORT).show();
-			intent = new Intent(MainActivity.this, GpxActivity.class);
+			intent = new Intent(MainActivity.this, Gpx_Activity.class);
 			startActivity(intent);
 		} else if (id == R.id.button_PDR) {
 //			Toast.makeText(MainActivity.this, "Button PDR Viewer", Toast.LENGTH_SHORT).show();
