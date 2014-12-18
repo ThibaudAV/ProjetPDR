@@ -28,7 +28,7 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 
-public class PDR_GMap_Activity extends Activity implements 	StepDetectionListener
+public class PDR_Activity_GMap extends Activity implements 	StepDetectionListener
 															,OnMapClickListener {
 	
 	private StepDetectionHandler stepDetectionHandler;
@@ -166,7 +166,7 @@ public class PDR_GMap_Activity extends Activity implements 	StepDetectionListene
 			float bearing = deviceAttitudeHandler.getYaw();
 			stepPositioningHandler.computeNextStep((float) 0.8, bearing);
 	
-			Toast.makeText(PDR_GMap_Activity.this, "Pas "+nbPas+" : [0.8, "+bearing+"]", Toast.LENGTH_SHORT).show();
+			Toast.makeText(PDR_Activity_GMap.this, "Pas "+nbPas+" : [0.8, "+bearing+"]", Toast.LENGTH_SHORT).show();
 	
 			LatLng point =  new LatLng(stepPositioningHandler.getmCurrentLocation().getLatitude(), stepPositioningHandler.getmCurrentLocation().getLongitude());
 			
@@ -184,7 +184,7 @@ public class PDR_GMap_Activity extends Activity implements 	StepDetectionListene
 	@Override
 	public void onMapClick(LatLng point) {
 		
-		Toast.makeText(PDR_GMap_Activity.this, "Nouveau Segement", Toast.LENGTH_SHORT).show();
+		Toast.makeText(PDR_Activity_GMap.this, "Nouveau Segement", Toast.LENGTH_SHORT).show();
 		// nouveau segment
 		googleMapTracer.newSegment(point);
 		// on met a jour la Current Location

@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-public class PDRActivity extends Activity implements StepDetectionListener, OnClickListener,DeviceAttitudeListener{
+public class PDR_Activity extends Activity implements StepDetectionListener, OnClickListener,DeviceAttitudeListener{
 	
 	StepDetectionHandler stepDetectionHandler;
 	DeviceAttitudeHandler deviceAttitudeHandler;

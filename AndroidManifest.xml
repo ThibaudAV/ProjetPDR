@@ -44,15 +44,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GpxViewer" >
+        <activity android:name=".GpxActivity" >
         </activity>
         <activity
-            android:name=".PDRActivity"
+            android:name=".PDR_Activity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_pdr" >
         </activity>
         <activity
-            android:name=".PDR_GMap_Activity"
+            android:name=".PDR_Activity_GMap"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_pdr_gmap" >
         </activity>

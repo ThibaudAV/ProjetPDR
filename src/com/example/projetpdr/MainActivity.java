@@ -36,17 +36,17 @@ public class MainActivity extends Activity  implements OnClickListener{
 		int id = view.getId();
 		if (id == R.id.button_gpx_view) {
 //			Toast.makeText(MainActivity.this, "Button GPX Viewer", Toast.LENGTH_SHORT).show();
-			intent = new Intent(MainActivity.this, GpxViewer.class);
+			intent = new Intent(MainActivity.this, GpxActivity.class);
 			startActivity(intent);
 		} else if (id == R.id.button_PDR) {
 //			Toast.makeText(MainActivity.this, "Button PDR Viewer", Toast.LENGTH_SHORT).show();
-			intent = new Intent(MainActivity.this, PDRActivity.class);
+			intent = new Intent(MainActivity.this, PDR_Activity.class);
 			startActivity(intent);
 			
 			
 		} else if (id == R.id.button_pdr_gmap) {
 //			Toast.makeText(MainActivity.this, "Button PDR Viewer", Toast.LENGTH_SHORT).show();
-			intent = new Intent(MainActivity.this, PDR_GMap_Activity.class);
+			intent = new Intent(MainActivity.this, PDR_Activity_GMap.class);
 			startActivity(intent);
 		}
 
