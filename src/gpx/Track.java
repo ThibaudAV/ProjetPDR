@@ -6,6 +6,9 @@ package gpx;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+
 /**
  * @author Mathilde et Thibaud
  *
@@ -13,6 +16,7 @@ import java.util.List;
 public class Track {
 	
 	public List<TrackSeg> trackSegs;
+	private LatLngBounds.Builder bounds;
 	
 	public Track()
 	{
@@ -34,6 +38,14 @@ public class Track {
 		return trackSegs;
 	}
 	
-	
+	public LatLngBounds getLatLngBounds()
+	{
+		for (TrackSeg ts : this.getTrackSegs())
+		{
+			bounds.include(ts.getLatLngBounds().getCenter());
+		}
+		
+		return bounds.build();
+	}
 
 }
