@@ -27,3 +27,4 @@ proguard/
 /project.properties
 project.properties
 project.properties
+src/pdr/GoogleMapTracer.java
