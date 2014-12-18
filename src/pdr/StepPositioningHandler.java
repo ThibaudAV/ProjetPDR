@@ -26,7 +26,7 @@ public class StepPositioningHandler {
 		double bearingRad = Math.toRadians(bearing); //(bearing*Math.PI/180);
 		
 		
-		float R = (float) 6378100; //Radius of the Earth en metre
+		float R = 6378100; //Radius of the Earth en metre
 		double lat =  Math.toRadians(this.mCurrentLocation.getLatitude());
 		double lon = Math.toRadians(this.mCurrentLocation.getLongitude());
 		

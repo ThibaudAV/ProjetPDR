@@ -20,6 +20,7 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="21" />
+    <uses-permission android:name="GPS_PROVIDER"/>
 
     <application
         android:allowBackup="true"
