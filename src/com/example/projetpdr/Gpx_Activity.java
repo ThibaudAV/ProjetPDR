@@ -113,10 +113,13 @@ public class Gpx_Activity extends Activity {
 						// Ajout d'une polyline à la carte avec les options de la variable chemin
 						myMap.addPolyline(chemin);
 					}
+					
+					
 				 }
-
-				
-				
+				 
+				 myMap.moveCamera(CameraUpdateFactory.newLatLngBounds(gpx.getLatLngBounds(), 50));
+				 
+				 
 			} catch (FileNotFoundException e) {
 				System.out.println("Erreur : " + e.getMessage());
 			} catch (XmlPullParserException e) {
@@ -124,6 +127,9 @@ public class Gpx_Activity extends Activity {
 			} catch (IOException e) {
 				System.out.println("Erreur : " + e.getMessage());
 			}
+	        
+	        
+	       
 	        
 		
 		
