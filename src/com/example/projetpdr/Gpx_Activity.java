@@ -20,9 +20,12 @@ import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -31,6 +34,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 public class Gpx_Activity extends Activity {
 
 	private GoogleMap myMap;
+	private LatLngBounds.Builder llbBuilder =  LatLngBounds.builder();
 	
 	
 	@Override
@@ -41,19 +45,21 @@ public class Gpx_Activity extends Activity {
 	    
 		setContentView(R.layout.activity_gpx_viewer);
 		
-		
+		//Création de la Google Map
 		MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map);
 		
 		 myMap = mapFragment.getMap();
 		 
-		 
-		 
-		 LatLng grenoble = new LatLng(45.187, 5.726);
+		 //Latitude et Longitude de Grenoble pour centrer la map au dépammare de l'application
+		// LatLng grenoble = new LatLng(45.187, 5.726);
 
 	        myMap.setMyLocationEnabled(true);
-	        myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(grenoble, 12));
+	        
+	        //Remplacé pour centrer la carte sur la Trace GPX
+	        //myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(grenoble, 12));
 
+	        //Ajout d'un marqueur sur la carte de Grenoble
 	       /* myMap.addMarker(new MarkerOptions()
 	                .title("Grenoble")
 	                .snippet("The most populous city in France.")
@@ -107,17 +113,31 @@ public class Gpx_Activity extends Activity {
 						for (TrackPoint tp : ts.getTrackPoints())
 						{
 							//Ajout du point dans les options
-					        chemin.add(new LatLng(tp.getLatitude(), tp.getLongitude())); 
+							
+							LatLng point = new LatLng(tp.getLatitude(), tp.getLongitude());
+					        chemin.add(point); 
+					        llbBuilder.include(point);
 						}
 						
 						// Ajout d'une polyline à la carte avec les options de la variable chemin
 						myMap.addPolyline(chemin);
+						
+						// Zoom sur le tracé
+						if (this.llbBuilder != null) {
+							myMap.setOnCameraChangeListener(new OnCameraChangeListener() {
+								@Override
+								public void onCameraChange(CameraPosition arg0) {
+									myMap.moveCamera(CameraUpdateFactory.newLatLngBounds(llbBuilder.build(), 20));
+									myMap.setOnCameraChangeListener(null);
+								}
+							});
+						}
 					}
 					
 					
 				 }
 				 
-				 myMap.moveCamera(CameraUpdateFactory.newLatLngBounds(gpx.getLatLngBounds(), 50));
+				 
 				 
 				 
 			} catch (FileNotFoundException e) {

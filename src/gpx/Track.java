@@ -38,7 +38,7 @@ public class Track {
 		return trackSegs;
 	}
 	
-	public LatLngBounds getLatLngBounds()
+	/*public LatLngBounds getLatLngBounds()
 	{
 		for (TrackSeg ts : this.getTrackSegs())
 		{
@@ -46,6 +46,6 @@ public class Track {
 		}
 		
 		return bounds.build();
-	}
+	}*/
 
 }

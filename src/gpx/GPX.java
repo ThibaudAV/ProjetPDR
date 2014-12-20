@@ -38,7 +38,7 @@ public class GPX {
 				return tracks;
 	}
 	
-	public LatLngBounds getLatLngBounds()
+	/*public LatLngBounds getLatLngBounds()
 	{
 		for (Track tt : this.getTracks())
 		{
@@ -46,7 +46,7 @@ public class GPX {
 		}
 		
 		return bounds.build();
-	}
+	}*/
 	
 	
 }

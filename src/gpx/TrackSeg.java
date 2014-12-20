@@ -39,7 +39,7 @@ public class TrackSeg {
 		return trackPoints;
 	}
 
-	public LatLngBounds getLatLngBounds()
+	/*public LatLngBounds getLatLngBounds()
 	{
 		for (TrackPoint tp : this.getTrackPoints())
 		{
@@ -48,6 +48,6 @@ public class TrackSeg {
 			bounds.include(new LatLng(tp.getLatitude(), tp.getLongitude()));
 		}
 		return bounds.build();
-	}
+	}*/
 	
 }
