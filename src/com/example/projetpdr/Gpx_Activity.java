@@ -16,18 +16,16 @@ import org.xmlpull.v1.XmlPullParserException;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
 import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 
@@ -35,6 +33,28 @@ public class Gpx_Activity extends Activity {
 
 	private GoogleMap myMap;
 	private LatLngBounds.Builder llbBuilder =  LatLngBounds.builder();
+	
+	
+	
+	
+	
+	public GPX lireFichierGPX(String file) {
+	try {
+			InputStream ips = new FileInputStream(file);
+			//InputStream ips = getAssets().open("bikeandrun.gpx");
+			GPX gpx = StackOverflowXmlParser.parse(ips);
+			return gpx;
+		} catch (FileNotFoundException e) {
+		System.out.println("Erreur : " + e.getMessage());
+		} catch (XmlPullParserException e) {
+		System.out.println("Erreur : " + e.getMessage());
+		} catch (IOException e) {
+		System.out.println("Erreur : " + e.getMessage());
+		} 
+	return null;
+	}
+
+	
 	
 	
 	@Override
@@ -51,51 +71,20 @@ public class Gpx_Activity extends Activity {
 		
 		 myMap = mapFragment.getMap();
 		 
-		 //Latitude et Longitude de Grenoble pour centrer la map au dépammare de l'application
-		// LatLng grenoble = new LatLng(45.187, 5.726);
-
 	        myMap.setMyLocationEnabled(true);
-	        
-	        //Remplacé pour centrer la carte sur la Trace GPX
-	        //myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(grenoble, 12));
-
-	        //Ajout d'un marqueur sur la carte de Grenoble
-	       /* myMap.addMarker(new MarkerOptions()
-	                .title("Grenoble")
-	                .snippet("The most populous city in France.")
-	                .position(grenoble)); */
-	        
-	        
-	        // Other supported types include: MAP_TYPE_NORMAL,
+	            
+	        // Mattre la carte en Satellite: MAP_TYPE_NORMAL,
 	        // MAP_TYPE_TERRAIN, MAP_TYPE_HYBRID and MAP_TYPE_NONE
 	        myMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-		 
-	     
+		         
+	        
 	       
-	        
-	        /* Test d'affichage des Polylines
-	         * 
-	         * Polyline chemin1 = myMap.addPolyline(new PolylineOptions()
-	        .add(new LatLng(45.189, 5.704), new LatLng(45.188, 5.725), new LatLng(45.191, 5.733))
-	        .width(5)
-	        .color(Color.RED));
-	        
-	        
-	        Polyline chemin2 = myMap.addPolyline(new PolylineOptions()
-	        .add(new LatLng(45.191, 5.733), new LatLng(45.196, 5.748))
-	        .width(5)
-	        .color(Color.GREEN));*/
-	        
-	        
-	        
-	        try {
 				//InputStream is = new FileInputStream("/mnt/sdcard/bikeandrun.gpx");
 	        	
 	        	//Fichier gpx à afficher sur la carte
-	        	InputStream is = getAssets().open("bikeandrun.gpx");
-
-	        	//Fichier gpx parsé
-				GPX gpx = StackOverflowXmlParser.parse(is);
+	        	Uri uri = getIntent().getData();
+	        	GPX gpx = lireFichierGPX(uri.getPath());
+	        	
 				
 				// Pour chaque Track
 				 for (Track t : gpx.getTracks())
@@ -133,47 +122,8 @@ public class Gpx_Activity extends Activity {
 							});
 						}
 					}
-					
-					
-				 }
-				 
-				 
-				 
-				 
-			} catch (FileNotFoundException e) {
-				System.out.println("Erreur : " + e.getMessage());
-			} catch (XmlPullParserException e) {
-				System.out.println("Erreur : " + e.getMessage());
-			} catch (IOException e) {
-				System.out.println("Erreur : " + e.getMessage());
-			}
+				
 	        
 	        
 	       
-	        
-		
-		
-	/*	Utiliser pour réaliser des tests lors du développement du Parseur
-	 * 
-	 * 
-	 * System.out.println("=============== DEBUT ===============");
-		try {
-			InputStream is = new FileInputStream("/mnt/sdcard/bikeandrun.gpx");
-			GPX gpx = StackOverflowXmlParser.parse(is);
-		} catch (FileNotFoundException e) {
-			System.out.println("Erreur : " + e.getMessage());
-		} catch (XmlPullParserException e) {
-			System.out.println("Erreur : " + e.getMessage());
-		} catch (IOException e) {
-			System.out.println("Erreur : " + e.getMessage());
-		}
-		System.out.println("=============== FIN ===============");	*/
-		
-		
-		
-		
-		
-		
-	}
-	
-}
+				 }}}
