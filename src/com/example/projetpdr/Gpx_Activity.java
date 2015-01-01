@@ -37,7 +37,10 @@ public class Gpx_Activity extends Activity {
 	
 	
 	
-	
+	/*
+	 * Méthode qui permet de lire un fichier GPX grâce au parseur.
+	 * Prend en paramètre un fichier gpx
+	 */
 	public GPX lireFichierGPX(String file) {
 	try {
 			InputStream ips = new FileInputStream(file);
@@ -79,9 +82,8 @@ public class Gpx_Activity extends Activity {
 		         
 	        
 	       
-				//InputStream is = new FileInputStream("/mnt/sdcard/bikeandrun.gpx");
 	        	
-	        	//Fichier gpx à afficher sur la carte
+	        	//Fichier gpx à afficher sur la carte (pour lire un fichier gpx avec l'application PDR)
 	        	Uri uri = getIntent().getData();
 	        	GPX gpx = lireFichierGPX(uri.getPath());
 	        	
@@ -102,7 +104,6 @@ public class Gpx_Activity extends Activity {
 						for (TrackPoint tp : ts.getTrackPoints())
 						{
 							//Ajout du point dans les options
-							
 							LatLng point = new LatLng(tp.getLatitude(), tp.getLongitude());
 					        chemin.add(point); 
 					        llbBuilder.include(point);
@@ -111,7 +112,7 @@ public class Gpx_Activity extends Activity {
 						// Ajout d'une polyline à la carte avec les options de la variable chemin
 						myMap.addPolyline(chemin);
 						
-						// Zoom sur le tracé
+						// Zoom sur le tracé (remplace les méthode getLatLngBounds() pour ne lire le fichier qu'une seule fois)
 						if (this.llbBuilder != null) {
 							myMap.setOnCameraChangeListener(new OnCameraChangeListener() {
 								@Override

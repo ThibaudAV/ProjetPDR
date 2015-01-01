@@ -18,6 +18,7 @@ public class MainActivity extends Activity  implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		//Création des boutons pour lancer différentes activitées
 		Button button_gpx_view = (Button) findViewById(R.id.button_gpx_view);
 		button_gpx_view.setOnClickListener(this);
 		
@@ -29,6 +30,10 @@ public class MainActivity extends Activity  implements OnClickListener{
 		
 	}
 
+	/*
+	 * Lance une acrivité différente lorsqu'on click sur l'un des boutons 
+	 * (l'activité GPX ne lance plus rien car il faut maintenant ouvrir un fichier GPX pour la lancer)
+	 */
 	@Override
 	public void onClick(View view) {
 		Intent intent;
